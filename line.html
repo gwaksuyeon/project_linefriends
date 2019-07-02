@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="line.css">
+        <link rel="stylesheet" href="sprite.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+        <link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><!--구형브라우저 html5사용가능-->
+        <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script><!--구형브라우저 css3가능-->
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><!--IE8이하 미디어쿼리 인식-->
+
+
+        <script>
+            $(function(){
+                $(".lang_select").hide();
+                $(".header_lang i").click(function(){
+                    $(this).toggleClass('sprite-up');
+                    $(".lang_select").toggle();
+                });//언어 선택메뉴
+
+                $(window).scroll(function(){
+                    if($(this).scrollTop()>=100){
+                        $("header").css("background-color", "white");
+                        $(".header_logo a img").attr('src','http://tndus5837.dothome.co.kr/line/img/img_logo2.png');
+                        $(".header_nav ul li a").css("color", "#333333");
+                        $(".header_nav ul li a").css("border-bottom-color", "#333333");
+                        $(".lang").css("color", "#333333");
+                    }
+                    else{
+                        $("header").css("background-color", "rgba(255, 255, 255, 0)");
+                        $(".header_logo a img").attr('src','http://tndus5837.dothome.co.kr/line/img/img_logo.png');
+                        $(".header_nav ul li a").css("color", "white");
+                        $(".header_nav ul li a").css("border-bottom-color", "white");
+                        $(".lang").css("color", "white");
+                    }
+                });//header스크롤시 효과
+
+                $(window).scroll(function(){           
+                if($(this).scrollTop()>=Math.ceil($('#cor').offset().top) && $(this).scrollTop()<Math.ceil($('#gal').offset().top)){
+                        $("#a_1").css("text-decoration", "underline");
+                    }
+                    else{
+                        $("#a_1").css("text-decoration", "none");
+                    }
+
+                    if($(this).scrollTop()>=Math.ceil($('#gal').offset().top) && $(this).scrollTop()<Math.ceil($('#med').offset().top)){
+                        $("#a_2").css("text-decoration", "underline");
+                    }
+
+                    else{
+                        $("#a_2").css("text-decoration", "none");
+                    }
+
+                    if($(this).scrollTop()>=Math.ceil($('#med').offset().top) && $(this).scrollTop()<Math.ceil($('#not').offset().top)){
+                        $("#a_3").css("text-decoration", "underline");
+                    }
+                    else{
+                        $("#a_3").css("text-decoration", "none");
+                    }
+
+                    if($(this).scrollTop()>=Math.ceil($('#not').offset().top) && $(this).scrollTop()<Math.ceil($('#abo').offset().top)){
+                        $("#a_4").css("text-decoration", "underline");
+                    }
+                    else{
+                        $("#a_4").css("text-decoration", "none");
+                    }
+
+                    if($(this).scrollTop()>=Math.ceil($('#abo').offset().top)){
+                        $("#a_5").css("text-decoration", "underline");
+                    }
+                    else{
+                        $("#a_5").css("text-decoration", "none");
+                    }
+                });//언더라인효과
+
+
+                $(".scroll").click(function(event){
+                    event.preventDefault();
+
+                    $('html,body').animate({
+                    scrollTop:$(this.hash).offset().top},500);
+                });//해당 div로 이동
+
+                var count=1;
+
+                $("#next").click(function(){
+                    count++;
+
+                    if(count==4){
+                        count=1;
+                    }
+                    
+                    $(".bg_img img").hide();
+                    $(".bg_img img").attr('src','http://tndus5837.dothome.co.kr/line/img/main_img'+count+'.jpg').fadeIn(900);
+
+                    move_dot();
+                });//다음으로 넘어가기
+
+                $("#prev").click(function(){
+                    count--;
+
+                    if(count==0){
+                        count=3;
+                    }
+                    $(".bg_img img").hide();
+                    $(".bg_img img").attr('src','http://tndus5837.dothome.co.kr/line/img/main_img'+count+'.jpg').fadeIn(900);
+
+                    move_dot();
+                });//이전으로 넘어가기
+
+                function move_dot(){
+                    if(count==1){
+                        if($("#dot1").hasClass("sprite-dot")){
+                            $("#dot1").removeClass("sprite-dot");
+                            $("#dot1").addClass("sprite-colordot");
+
+                            $("#dot2").removeClass("sprite-colordot");
+                            $("#dot2").addClass("sprite-dot");
+                            $("#dot3").removeClass("sprite-colordot");
+                            $("#dot3").addClass("sprite-dot");
+                        }
+                    }
+
+                    if(count==2){
+                        if($("#dot2").hasClass("sprite-dot")){
+                            $("#dot2").removeClass("sprite-dot");
+                            $("#dot2").addClass("sprite-colordot");
+
+                            $("#dot1").removeClass("sprite-colordot");
+                            $("#dot1").addClass("sprite-dot");
+                            $("#dot3").removeClass("sprite-colordot");
+                            $("#dot3").addClass("sprite-dot");
+                        }
+                    }
+
+                    if(count==3){
+                        if($("#dot3").hasClass("sprite-dot")){
+                            $("#dot3").removeClass("sprite-dot");
+                            $("#dot3").addClass("sprite-colordot");
+
+                            $("#dot1").removeClass("sprite-colordot");
+                            $("#dot1").addClass("sprite-dot");
+                            $("#dot2").removeClass("sprite-colordot");
+                            $("#dot2").addClass("sprite-dot");
+                        }
+                    }
+                }//dot 이동
+                
+                $("#dot1").click(function(){
+                    if(count==2 || count==3){count=1;}
+                    if($("#dot1").hasClass("sprite-dot")){
+                        $("#dot1").removeClass("sprite-dot");
+                        $("#dot1").addClass("sprite-colordot");
+
+                        $("#dot2").removeClass("sprite-colordot");
+                        $("#dot2").addClass("sprite-dot");
+                        $("#dot3").removeClass("sprite-colordot");
+                        $("#dot3").addClass("sprite-dot");
+                    }
+                    $(".bg_img img").attr('src','http://tndus5837.dothome.co.kr/line/img/main_img1.jpg');
+                });
+
+                $("#dot2").click(function(){
+                    if(count==1 ||count==3){count=2;}
+                    if($("#dot2").hasClass("sprite-dot")){
+                        $("#dot2").removeClass("sprite-dot");
+                        $("#dot2").addClass("sprite-colordot");
+
+                        $("#dot1").removeClass("sprite-colordot");
+                        $("#dot1").addClass("sprite-dot");
+                        $("#dot3").removeClass("sprite-colordot");
+                        $("#dot3").addClass("sprite-dot");
+                    }
+                    $(".bg_img img").attr('src','http://tndus5837.dothome.co.kr/line/img/main_img2.jpg');
+                });
+
+                $("#dot3").click(function(){
+                    if(count==1 || count==2){count=3;}
+                    if($("#dot3").hasClass("sprite-dot")){
+                        $("#dot3").removeClass("sprite-dot");
+                        $("#dot3").addClass("sprite-colordot");
+
+                        $("#dot1").removeClass("sprite-colordot");
+                        $("#dot1").addClass("sprite-dot");
+                        $("#dot2").removeClass("sprite-colordot");
+                        $("#dot2").addClass("sprite-dot");
+                    }
+                    $(".bg_img img").attr('src','http://tndus5837.dothome.co.kr/line/img/main_img3.jpg');
+                });
+
+
+                var count_2=1;
+                
+                $("#next_2").click(function(){
+                    count_2++;
+                    if(count_2==6){
+                        count_2=1;
+                    }
+                    
+                    $(".con_2_img img").hide();
+                    $(".con_2_img img").attr('src','http://tndus5837.dothome.co.kr/line/img/con_img'+count_2+'.jpg').fadeIn(850);
+
+                    $(".con_2_sul li:not(:eq(count_2-1))").removeClass('first').addClass('first_not');//eq는 인덱스라서 1빼줌
+                    $(".con_2_sul li").eq(count_2-1).removeClass('first_not').addClass('first');
+                    
+                });//con_2에있는 다음버튼 클릭
+
+                $("#prev_2").click(function(){
+                    count_2--;
+                    if(count_2==0){
+                        count_2=5;
+                    }
+
+                    $(".con_2_img img").hide();
+                    $(".con_2_img img").attr('src','http://tndus5837.dothome.co.kr/line/img/con_img'+count_2+'.jpg').fadeIn(850);
+
+                    $(".con_2_sul li:not(:eq(count_2-1))").removeClass('first').addClass('first_not');//eq는 인덱스라서 1빼줌
+                    $(".con_2_sul li").eq(count_2-1).removeClass('first_not').addClass('first');
+                });//con_2에있는 이전버튼 클릭
+
+                $(".con_2_sul li").click(function(){
+                    count_2=$(this).index();
+                    count_2++;
+                    $(".con_2_img img").hide();
+                    $(".con_2_img img").attr('src','http://tndus5837.dothome.co.kr/line/img/con_img'+count_2+'.jpg').fadeIn(850);
+
+                    $(".con_2_sul li:not(:eq(count_2-1))").removeClass('first').addClass('first_not');
+                    $(".con_2_sul li").eq(count_2-1).removeClass('first_not').addClass('first');
+                });//작은 썸네일 클릭시 이동
+
+                $(".con_media_page li").click(function(){
+                    $(this).find('a').addClass('current');
+                    $(".con_media_page li").not($(this)).find('a').removeClass('current');
+                });//con_3 버튼이동
+
+                $(".con_notice_page li").click(function(){
+                    $(this).find('a').addClass('current');
+                    $(".con_notice_page li").not($(this)).find('a').removeClass('current');
+                });//con_4 버튼이동
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="header_wrap">
+                <div class="header_logo">
+                    <a href="#">
+                        <img src="http://tndus5837.dothome.co.kr/line/img/img_logo.png" alt="로고">
+                    </a>
+                </div>
+               
+                <div class="header_nav">
+                    <ul>
+                        <li><a href="#cor" class="scroll" id="a_1">CORE BUSINESS</a></li>
+                        <li><a href="#gal" class="scroll" id="a_2">GALLERY</a></li>
+                        <li><a href="#med" class="scroll" id="a_3">MEDIA</a></li>
+                        <li><a href="#not" class="scroll" id="a_4">NOTICE</a></li>
+                        <li><a href="#abo" class="scroll" id="a_5">ABOUT</a></li>
+                        <li><a href="#">ONLINE STORE</a></li>
+                    </ul>
+                </div>
+
+                <div class="header_lang">
+                    <span class="lang">한국어</span>
+                    <i class="sprite sprite-down"></i>
+
+                    <div class="lang_select" style="display:none;">
+                        <ul>
+                            <li><a href="#">한국어</a></li>
+                            <li><a href="#">ENGLISH</a></li>
+                            <li><a href="#">日本語</a></li>
+                            <li><a href="#">中文(简体)</a></li>
+                            <li><a href="#">中文(繁體)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="visual_wrap">
+                <div class="bg_dim"></div>
+                <div class="bg_img">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/main_img1.jpg" alt="배경이미지" id="main_1">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/main_img2.jpg" alt="배경이미지" id="main_2" >
+                    <img src="http://tndus5837.dothome.co.kr/line/img/main_img3.jpg" alt="배경이미지" id="main_3" >
+                </div>
+                <div class="bg_text">
+                    <p class="main_text">Global Character Brand</p>
+                    <img src="http://tndus5837.dothome.co.kr/line/img/img_c_logo.png" alt="메인로고">
+                </div>
+                <div class="bg_button">
+                    <button type="button" class="sprite sprite-colordot" id="dot1"></button>
+                    <button type="button" class="sprite sprite-dot" id="dot2"></button>
+                    <button type="button" class="sprite sprite-dot" id="dot3"></button>
+                </div>
+                <button type="button" class="sprite sprite-prev" id="prev"></button>
+                <button type="button" class="sprite sprite-next" id="next"></button>
+            </div>
+
+            <section class="con_1" id="cor">
+                <div class="con_1_wrap">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/img_sec.jpg" alt="con_1사진">
+                    <p>CORE BUSINESS</p>
+                    <ul>
+                        <li>
+                            <img src="http://tndus5837.dothome.co.kr/line/img/img_sec_icon4.gif" alt="con1_1">
+                            <p class="con_title">Store Merchandise</p>
+                            <p class="con_text">다양한 캐릭터 제품을 자체 제작하여 전 세계 주요 도시의 온/오프라인 스토어에서 판매하고 매장을 통해 도심 속 활력의 경험을 제공합니다.</p>
+                        </li>
+                        <li>
+                            <img src="http://tndus5837.dothome.co.kr/line/img/img_sec_icon5.gif" alt="con1_2">
+                            <p class="con_title">Licensing</p>
+                            <p class="con_text">글로벌 파트너들과의 전략적 제휴를 통해 콜라보레이션, 라이센싱 제품을 만들고 서로의 철학과 가치를 나눕니다.​</p>
+                        </li>
+                        <li>
+                            <img src="http://tndus5837.dothome.co.kr/line/img/img_sec_icon6.gif" alt="con1_3">
+                            <p class="con_title">Content Production</p>
+                            <p class="con_text">애니메이션, 게임 콘텐츠를 내부 스튜디오에서 자체 제작하는 동시에 IT 노하우와 기술을 더하여 AI,IoT 등으로 사업을 확장하고 있습니다.​</p>
+                        </li>
+                    </ul>
+                    <div class="business">
+                        <a href="#">제휴 제안<i class="sprite sprite-btn_ico"></i></a>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="con_2" id="gal">
+                <div class="con_2_img">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/con_img1.jpg" alt="사진1">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/con_img2.jpg" alt="사진2">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/con_img3.jpg" alt="사진3">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/con_img4.jpg" alt="사진4">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/con_img5.jpg" alt="사진5">
+                </div>
+                
+                <button type="button" class="sprite sprite-prev" id="prev_2"></button>
+                <button type="button" class="sprite sprite-next" id="next_2"></button>
+                
+                <div class="location">
+                    <i class="sprite sprite-location"></i>
+                    <a href="#">Hongdae L7, Seoul</a>
+                </div>
+
+                <ul class="con_2_sul">
+                    <li class="first"><img src="http://tndus5837.dothome.co.kr/line/img/con_img1.jpg" alt="사진1"></li>
+                    <li class="first_not"><img src="http://tndus5837.dothome.co.kr/line/img/con_img2.jpg" alt="사진2"></li>
+                    <li class="first_not"><img src="http://tndus5837.dothome.co.kr/line/img/con_img3.jpg" alt="사진3"></li>
+                    <li class="first_not"><img src="http://tndus5837.dothome.co.kr/line/img/con_img4.jpg" alt="사진4"></li>
+                    <li class="first_not"><img src="http://tndus5837.dothome.co.kr/line/img/con_img5.jpg" alt="사진5"></li>
+                </ul>
+
+                <button type="button" class="sprite sprite-smallprev" id="sprev"></button>
+                <button type="button" class="sprite sprite-smallnext" id="snext"></button>
+
+            </section>
+
+            <section class="con_3" id="med">
+                <div class="con_3_wrap">
+                    <p>MEDIA</p>
+                    <ul class="con_media">
+                        <li>
+                            <a href="#">
+                                <div class="img_area">
+                                    <img src="http://tndus5837.dothome.co.kr/line/img/media_img1.jpg" alt="이미지">
+                                </div>
+                                <div class="text_area">
+                                    <p class="text_area_title">라인프렌즈, 샤오미와 전략적 파트너십 통해 중국 사업 확장 나선다</p>
+                                    <p class="text_area_info">라인프렌즈는 중국 대표 IT 기업 ‘샤오미(Xiaomi)’와 전략적인 파트너십을 맺고, 
+                                        양사간 콜라보레이션을 통해 ‘SUPER MI, SUPER BROWN’ 콘셉트의 ‘MI9 SE BROWN EDITION(MI9 SE 브라운 에디션)’ 
+                                        패키지를 중국에서 선보인다. </p>
+                                    <p class="text_area_date">2019-04-04</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img_area">
+                                    <img src="http://tndus5837.dothome.co.kr/line/img/media_img2.jpg" alt="이미지">
+                                </div>
+                                <div class="text_area">
+                                    <p class="text_area_title">라인프렌즈, ‘Anti Social Social Club(안티 소셜 소셜 클럽)’과 콜라보레이션 글로벌 런칭</p>
+                                    <p class="text_area_info">라인프렌즈는 글로벌 밀레니얼 인기 캐릭터 ‘BT21’와 전세계적으로 가장 ‘힙’한 스트릿 웨어 브랜드인 
+                                        Anti Social Social Club(안티 소셜 소셜 클럽 www.antisocialsocialclub.com)과의 콜라보레이션을 전격 발표했다.  </p>
+                                    <p class="text_area_date">2018-11-16</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img_area">
+                                    <img src="http://tndus5837.dothome.co.kr/line/img/media_img3.jpg" alt="이미지">
+                                </div>
+                                <div class="text_area">
+                                    <p class="text_area_title">라인프렌즈, 뱅앤올룹슨 사상 최초의 캐릭터 콜라보레이션! ‘브라운’ 디자인 적용한 프리미엄 스피커 글로벌 런칭</p>
+                                    <p class="text_area_info">라인프렌즈가 뱅앤올룹슨(Bang & Olufsen)과의 콜라보레이션을 통해 'Beoplay P2 브라운'을 10월 4일부터 글로벌 런칭한다.</p>
+                                    <p class="text_area_date">2018-10-01</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="con_media_page">
+                        <li><a href=# class="current">1</a></li>
+                        <li><a href=#>2</a></li>
+                        <li><a href=#>3</a></li>
+                        <li><a href=#>4</a></li>
+                        <li><a href=#>5</a></li>
+                        <span>></span>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="con_4" id="not">
+                <div class="con_4_wrap">
+                    <p>NOTICE</p>
+                    <ul class="con_notice">
+                        <li class="thead">
+                            <p class="h_number">번호</p>
+                            <p class="h_area">지역</p>
+                            <p class="h_notice">제목</p>
+                            <p class="h_date">날짜</p>
+                        </li>
+                        <li>
+                            <p class="number">8</p>
+                            <p class="area">한국</p>
+                            <a href="#" class="notice"><p>[이벤트 공지] BT21 트위터 300만 팔로워 기념 이벤트</p></a>
+                            <p class="date">2019-01-24</p>
+                        </li>
+                        <li>
+                            <p class="number">7</p>
+                            <p class="area">한국</p>
+                            <a href="#" class="notice"><p>[스토어 공지] BT21 FESTIVAL - 할인 프로모션 사전 안내</p></a>
+                            <p class="date">2018-12-21</p>
+                        </li>
+                        <li>
+                            <p class="number">6</p>
+                            <p class="area">한국</p>
+                            <a href="#" class="notice"><p>[스토어 공지] 라인프렌즈 L7 홍대점 신규 오픈에 따른 BT21 제품 출시 안내</p></a>
+                            <p class="date">2018-04-24</p>
+                        </li> 
+                    </ul>
+
+                    <ul class="con_notice_page">
+                        <li><a href=# class="current">1</a></li>
+                        <li><a href=#>2</a></li>
+                        <li><a href=#>3</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="con_5" id="abo">
+                <div class="con_5_wrap">
+                    <div class="con_5_box">
+                        <p>ABOUT LINE FRIENDS</p>
+                        <ul>
+                            <li>
+                                <div class="con_5_textwrap">
+                                    <p class="con_5_title">세상 밖으로 나온 모바일 캐릭터</p>
+                                    <p class="con_5_text">라인프렌즈는 2011년, 모바일 메신저 ‘라인’의 
+                                        스티커 캐릭터로 탄생했습니다. 친근하고 공감가는 모습으로 사용자들에게 즐거움을 
+                                        주는 라인프렌즈 캐릭터들은 모바일이라는 탄생배경을 넘어 일상 생활에서 가깝게 만날 수 있습니다. 
+                                        5,000여 가지의 캐릭터 제품, 애니메이션, 게임, 카페, 호텔, 테마파크에 이르기까지 다양한 영역에서 
+                                        세계인들의 사랑을 받는 브랜드가 되었습니다. </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="con_5_textwrap">
+                                    <p class="con_5_title">글로벌 캐릭터 브랜드</p>
+                                    <p class="con_5_text">뉴욕, 도쿄, 상하이, 북경, 홍콩, 방콕, 서울 등에 스토어를 오픈한 라인프렌즈는 
+                                        글로벌 캐릭터 브랜드 & 크리에이티브 스튜디오입니다.​ 세계 유수의 글로벌 브랜드들과 협업하여 콜라보레이션 
+                                        제품을 만들고 라인프렌즈만의 특별한 경험을 제공하며 독보적인 캐릭터 브랜드로 주목받고 있습니다.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="con_5_textwrap">
+                                    <p class="con_5_title">밀레니얼에게 사랑받는 캐릭터</p>
+                                    <p class="con_5_text">​라인프렌즈는 글로벌 메신저 플랫폼 LINE과 소셜 미디어를 통해 밀레니얼 세대의 
+                                        트렌드에 맞춰 발빠르게 소통하고 교감합니다. 패션, 뷰티 트렌드를 이끄는 KOL과 셀러브리티들이 
+                                        라인프렌즈에 열광합니다.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="con_5_textwrap">
+                                    <p class="con_5_title">라인프렌즈가 선보이는 새로운 경험</p>
+                                    <p class="con_5_text">​2015년, 캐릭터 브랜드로서의 가치를 더욱 높이고 캐릭터 사업의 전문성을 강화하기 
+                                        위해 라인프렌즈 주식회사가 설립 되었습니다. 전 세계를 무대로 라인프렌즈가 선보이게 될 새로운 
+                                        공간, 서비스, 제품들을 통해 다양한 즐거움을 만나보세요.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="http://tndus5837.dothome.co.kr/line/img/img_sec4.png" alt="con_5이미지">
+                </div>
+            </section>
+
+            <section class="con_6">
+               <div class="con_6_wrap1">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/bg_left.png" alt="왼쪽이미지">
+                    <div class="con_6_box_1">
+                        <p class="con_6_title1">LINE FRIENDS</p>
+                        <p class="con_6_text1">라인의 대표캐릭터, 라인프렌즈를 만나보세요!</p>
+                        <a href="#" class="con_6_show1">영상보기</a>
+                    </div>
+               </div>
+               <img src="http://tndus5837.dothome.co.kr/line/img/bg_center.png" alt="왼쪽이미지">
+               <div class="con_6_wrap2">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/bg_right.png" alt="오른쪽이미지">
+                    <div class="con_6_box_2">
+                        <p class="con_6_title2">BT21</p>
+                        <p class="con_6_text2">우주스타BT21, Created by BTS</p>
+                        <a href="#" class="con_6_show2">영상보기</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer_wrap">
+                <div class="footer_logo">
+                    <img src="http://tndus5837.dothome.co.kr/line/img/footer_logo.png" alt="푸터로고">
+                </div>
+                <div class="footer_text">
+                    <ul>
+                        <li class="footer_text1">
+                            <a href="#">제휴제안</a>
+                            <a href="#">온라인 스토어</a>
+                            <a href="#">개인정보 처리방침</a>
+                            <a href="#">FRIENDS CARE</a>
+                        </li>
+                        <li class="footer_text2">
+                            <span>라인프렌즈</span>
+                            <span>주식회사사업자등록번호: 726-87-00030</span>
+                            <span>통신판매업 신고번호 : 2015-경기성남-0597</span>
+                            <br>
+                            <span>대표이사:김성훈</span>
+                            <span>서울 용산구 이태원로 200 라인프렌즈 5층</span>
+                            <span>1544-5921</span>
+                        </li>
+                        <li class="footer_text3">
+                            <p>Copyright © LINE Friends All Rights Reserved</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer_sns">
+                    <ul>
+                        <li><a href="#"><i class="sprite sprite-facebook"></i></a></li>
+                        <li><a href="#"><i class="sprite sprite-instargram"></i></a></li>
+                        <li><a href="#"><i class="sprite sprite-twitter"></i></a></li>
+                        <li><a href="#"><i class="sprite sprite-youtube"></i></a></li>
+                        <li><a href="#"><i class="sprite sprite-sina"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

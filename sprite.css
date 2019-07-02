@@ -1,0 +1,131 @@
+.sprite {
+    background-image: url(spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-brownbox {
+    width: 135px;
+    height: 50px;
+    background-position: -5px -5px;
+}
+
+.sprite-btn_ico {
+    width: 14px;
+    height: 18px;
+    background-position: -150px -5px;
+}
+
+.sprite-colordot {
+    width: 8px;
+    height: 8px;
+    background-position: -174px -5px;
+}
+
+.sprite-dot {
+    width: 8px;
+    height: 8px;
+    background-position: -192px -5px;
+}
+
+.sprite-down {
+    width: 15px;
+    height: 9px;
+    background-position: -174px -23px;
+}
+
+.sprite-down2 {
+    width: 15px;
+    height: 9px;
+    background-position: -199px -23px;
+}
+
+.sprite-facebook {
+    width: 8px;
+    height: 16px;
+    background-position: -150px -42px;
+}
+
+.sprite-hoverbrwon {
+    width: 135px;
+    height: 50px;
+    background-position: -5px -65px;
+}
+
+.sprite-hoverwhite {
+    width: 135px;
+    height: 50px;
+    background-position: -5px -125px;
+}
+
+.sprite-instargram {
+    width: 15px;
+    height: 14px;
+    background-position: -168px -42px;
+}
+
+.sprite-location {
+    width: 10px;
+    height: 14px;
+    background-position: -193px -42px;
+}
+
+.sprite-next {
+    width: 31px;
+    height: 60px;
+    background-position: -168px -66px;
+}
+
+.sprite-prev {
+    width: 31px;
+    height: 60px;
+    background-position: -150px -136px;
+}
+
+.sprite-sina {
+    width: 22px;
+    height: 17px;
+    background-position: -191px -136px;
+}
+
+.sprite-smallnext {
+    width: 7px;
+    height: 14px;
+    background-position: -191px -163px;
+}
+
+.sprite-smallprev {
+    width: 7px;
+    height: 14px;
+    background-position: -208px -163px;
+}
+
+.sprite-twitter {
+    width: 16px;
+    height: 14px;
+    background-position: -5px -187px;
+}
+
+.sprite-up {
+    width: 15px;
+    height: 9px;
+    background-position: -31px -187px;
+}
+
+.sprite-up2 {
+    width: 15px;
+    height: 9px;
+    background-position: -56px -187px;
+}
+
+.sprite-whitebox {
+    width: 135px;
+    height: 50px;
+    background-position: -224px -5px;
+}
+
+.sprite-youtube {
+    width: 20px;
+    height: 14px;
+    background-position: -213px -65px;
+}
